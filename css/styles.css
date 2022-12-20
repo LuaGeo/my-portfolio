@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  width: 100%;
+  max-width: 1440px;
+  background-color: #5c48d2;
+  font-family: Verdana, Tahoma, Arial, sans-serif;
+  font-size: 1.6rem;
+}
+
+h1 {
+  font-size: 4.8rem;
+  color: #fff;
+  line-height: 20rem;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.main-block {
+  width: 100%;
+  max-width: 1024px;
+  height: 500px;
+  background: white;
+  border-radius: 20px;
+  margin: 0 auto;
+}
+
+nav {
+  height: 100px;
+  border-radius: 20px;
+  background-color: #fff;
+  display: flex;
+  justify-content: space-evenly;
+  /* flex: 1, width: 25% */
+  align-items: center;
+}
+
+.link {
+  font-size: 2rem;
+  color: #190f33;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.link:hover {
+  color: #5c48d2;
+}
+
+.img_bg {
+  background: url(../img/computer.jpeg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  width: 100%;
+  max-width: 1024px;
+}
+
+.section_aboutme {
+  width: 100%;
+  max-width: 1024px;
+  background: white;
+  padding: 10rem;
+}
+
+.section_aboutme_top {
+  display: flex;
+  justify-content: center;
+  gap: 5rem;
+  margin-bottom: 5rem;
+}
+
+.photo_profile {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 0.2rem solid #fcc01a;
+  object-fit: cover;
+}
+
+.section_abouteme_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h2 {
+  font-size: 3.8rem;
+  font-weight: bold;
+  color: #190f33;
+  margin-bottom: 5rem;
+  text-transform: capitalize;
+}
+
+h3 {
+  font-size: 3rem;
+  font-style: italic;
+  color: #190f33;
+  text-transform: capitalize;
+  margin-bottom: 4rem;
+}
+
+p {
+  line-height: 3rem;
+  text-align: justify;
+  margin-bottom: 4rem;
+}
+
+.h3_sections {
+  font-weight: bold;
+  font-style: normal;
+}
+
+.section_education {
+  width: 100%;
+  max-width: 1à24px;
+  background: #eeeef7;
+  padding: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logos {
+  height: 100px;
+}
+
+.logos_education {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.section_projects {
+  width: 100%;
+  max-width: 1024px;
+  background: white;
+  padding: 10rem;
+}
+.section_contact {
+  width: 100%;
+  max-width: 1024px;
+  background: #eeeef7;
+  padding: 10rem;
+}

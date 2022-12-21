@@ -14,6 +14,7 @@ body {
   background-color: #5c48d2;
   font-family: Verdana, Tahoma, Arial, sans-serif;
   font-size: 1.6rem;
+  margin: 0 auto;
 }
 
 h1 {
@@ -66,16 +67,20 @@ nav {
 
 .section_aboutme {
   width: 100%;
+  height: max-content;
   max-width: 1024px;
   background: white;
   padding: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 5rem;
 }
 
 .section_aboutme_top {
   display: flex;
   justify-content: center;
   gap: 5rem;
-  margin-bottom: 5rem;
 }
 
 .photo_profile {
@@ -86,38 +91,40 @@ nav {
   object-fit: cover;
 }
 
-.section_abouteme_text {
+.section_aboutme_name_and_city {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 5rem;
 }
 
 h2 {
   font-size: 3.8rem;
   font-weight: bold;
   color: #190f33;
-  margin-bottom: 5rem;
+  /* margin-bottom: 5rem; */
   text-transform: capitalize;
 }
 
 h3 {
   font-size: 3rem;
-  font-style: italic;
+  /* font-style: italic; */
   color: #190f33;
   text-transform: capitalize;
-  margin-bottom: 4rem;
+  font-weight: bold;
+  /* margin-bottom: 4rem; */
+}
+
+.h3_italic {
+  font-style: italic;
+  font-weight: normal;
 }
 
 p {
   line-height: 3rem;
   text-align: justify;
-  margin-bottom: 4rem;
-}
-
-.h3_sections {
-  font-weight: bold;
-  font-style: normal;
+  /* margin-bottom: 4rem; */
 }
 
 .section_education {
@@ -128,6 +135,16 @@ p {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  gap: 10rem;
+}
+
+.bolded {
+  font-weight: bold;
+}
+
+.p_text_sections {
+  text-align: center;
 }
 
 .logos {
@@ -145,7 +162,54 @@ p {
   max-width: 1024px;
   background: white;
   padding: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10rem;
 }
+
+.title_section_projects {
+  height: 328.13px; /* so consegui fazendo assim :( */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 4rem;
+}
+
+.text_section_projects {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.projects {
+  width: 100%;
+  max-width: 1024px;
+  display: flex;
+  align-items: center;
+  gap: 8rem;
+}
+
+.img_projects {
+  width: 50rem;
+}
+
+h4 {
+  font-size: 2.6rem;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+h5 {
+  font-size: 1.8rem;
+  text-transform: capitalize;
+  font-weight: bold;
+}
+
+ul {
+  line-height: 30px;
+}
+
 .section_contact {
   width: 100%;
   max-width: 1024px;

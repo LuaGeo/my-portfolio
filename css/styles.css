@@ -28,7 +28,6 @@ h1 {
 .main-block {
   width: 100%;
   max-width: 1024px;
-  height: 500px;
   background: white;
   border-radius: 20px;
   margin: 0 auto;
@@ -48,11 +47,14 @@ nav {
   font-size: 2rem;
   color: #190f33;
   text-decoration: none;
-  text-transform: capitalize;
 }
 
 .link:hover {
   color: #5c48d2;
+}
+
+.link_header {
+  text-transform: capitalize;
 }
 
 .img_bg {
@@ -122,6 +124,7 @@ h3 {
 }
 
 p {
+  font-size: 2rem;
   line-height: 3rem;
   text-align: justify;
   /* margin-bottom: 4rem; */
@@ -129,7 +132,7 @@ p {
 
 .section_education {
   width: 100%;
-  max-width: 1à24px;
+  max-width: 1024px;
   background: #eeeef7;
   padding: 10rem;
   display: flex;
@@ -215,4 +218,61 @@ ul {
   max-width: 1024px;
   background: #eeeef7;
   padding: 10rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.contacts {
+  display: flex;
+  text-decoration: none;
+  justify-content: center;
+  align-items: center;
+}
+
+.contacts_block {
+  height: 190px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 7rem;
+}
+
+.contact_imgs {
+  height: 30px;
+  margin-right: 2rem;
+}
+
+footer {
+  width: 100%;
+  max-width: 1024px;
+  height: 100%;
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 10rem;
+}
+
+.text_footer {
+  line-height: 4rem;
+  font-size: 1.6rem;
+  color: #c4c4c4;
+}
+
+.link_footer {
+  text-transform: capitalize;
+  color: #fcc01a;
+  line-height: 4rem;
+  font-size: 1.6rem;
+}
+
+.link_footer:hover {
+  color: #190f33;
 }

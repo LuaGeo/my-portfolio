@@ -39,7 +39,6 @@ nav {
   background-color: #fff;
   display: flex;
   justify-content: space-evenly;
-  /* flex: 1, width: 25% */
   align-items: center;
 }
 
@@ -108,11 +107,8 @@ h2 {
 
 h3 {
   font-size: 3rem;
-  /* font-style: italic; */
   color: #190f33;
-  /* text-transform: capitalize; */
   font-weight: bold;
-  /* margin-bottom: 4rem; */
 }
 
 .h3_italic {
@@ -120,11 +116,11 @@ h3 {
   font-weight: normal;
 }
 
-/* p {
+p {
   font-size: 2rem;
   line-height: 3rem;
   text-align: justify;
-  /* margin-bottom: 4rem; }*/
+}
 
 .section_education {
   width: 100%;
@@ -141,10 +137,6 @@ h3 {
 .bolded {
   font-weight: bold;
 }
-
-/* .p_text_sections {
-  text-align: center;
-} */
 
 .logos {
   height: 100px;

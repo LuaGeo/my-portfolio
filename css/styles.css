@@ -174,28 +174,25 @@ p {
 
 .section_projects {
   width: 100%;
-  max-width: 1024px;
   background: rgba(255, 255, 255, 0.79);
   padding: 10rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10rem;
+  gap: 6rem;
 }
 
 .project {
   width: 100%;
-  max-width: 1024px;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 12rem;
 }
 
 .img_projects {
-  width: 460px;
+  width: 100%;
   opacity: 1;
-  display: block;
-  height: auto;
   transition: 0.5s ease;
   backface-visibility: hidden;
 }
@@ -233,6 +230,7 @@ p {
 
 .text_section_projects {
   height: 50%;
+  width: 300px;
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -379,15 +377,16 @@ footer {
   .section_projects,
   .section_contact {
     padding: 5rem;
+    align-items: center;
   }
   .section_aboutme_top,
   .project {
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     gap: 2rem;
   }
-  .img_projects {
-    width: 100%;
-  }
+
   html,
   body {
     overflow-x: hidden;
@@ -403,7 +402,21 @@ footer {
   .section_projects,
   .section_contact {
     padding: 3rem;
+    align-items: center;
   }
+  .section_projects {
+    padding: 0;
+    align-items: center;
+  }
+  .project {
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .img_projects {
+    height: auto;
+    width: 100%;
+  }
+
   h1 {
     font-size: 3.6rem;
     line-height: 12rem;

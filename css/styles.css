@@ -11,6 +11,8 @@
 html,
 body {
   overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
   height: 100vh;
 }
 
@@ -20,6 +22,15 @@ h1 {
   line-height: 20rem;
   text-transform: capitalize;
   text-align: center;
+}
+
+.img_bg,
+.section_aboutme,
+.section_education,
+.section_projects,
+.section_contact,
+footer {
+  max-width: 100vw;
 }
 
 .main-block {
@@ -59,6 +70,7 @@ nav {
 .body_bg {
   background-image: url("../img/bg.png");
   width: 100vw;
+  height: 100vh;
 }
 .img_bg {
   background: url(../img/computer.jpeg);
@@ -362,10 +374,6 @@ footer {
 /* Media Queries */
 
 @media (max-width: 1024px) {
-  html,
-  body {
-    overflow-x: hidden;
-  }
   .section_aboutme,
   .section_education,
   .section_projects,
@@ -380,13 +388,13 @@ footer {
   .img_projects {
     width: 100%;
   }
-}
-
-@media (max-width: 768px) {
   html,
   body {
     overflow-x: hidden;
   }
+}
+
+@media (max-width: 768px) {
   .section_aboutme,
   .section_education,
   .section_projects,
@@ -408,5 +416,9 @@ footer {
   }
   a {
     font-size: 1.2rem;
+  }
+  html,
+  body {
+    overflow-x: hidden;
   }
 }

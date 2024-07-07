@@ -8,14 +8,10 @@
   font-size: 62.5%;
 }
 
-/* body {
-  width: 100%;
-  max-width: 1440px;
-  background-color: #5c48d2;
-  font-family: Verdana, Tahoma, Arial, sans-serif;
-  font-size: 1.6rem;
-  margin: 0 auto;
-} */
+html,
+body {
+  overflow-x: hidden;
+}
 
 h1 {
   font-size: 4.8rem;
@@ -306,8 +302,6 @@ ul li {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
 }
 
 .contacts {
@@ -342,7 +336,7 @@ footer {
   align-items: center;
   margin: 0 auto;
   padding: 5rem;
-  background-color: #eeeef7f0;
+  background-color: #eeeef7fb;
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
 }
@@ -364,14 +358,21 @@ footer {
   color: #190f33;
 }
 
-
 /* Media Queries */
 
 @media (max-width: 1024px) {
-  .section_aboutme, .section_education, .section_projects, .section_contact {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  .section_aboutme,
+  .section_education,
+  .section_projects,
+  .section_contact {
     padding: 5rem;
   }
-  .section_aboutme_top, .project {
+  .section_aboutme_top,
+  .project {
     flex-direction: column;
     gap: 2rem;
   }
@@ -381,7 +382,14 @@ footer {
 }
 
 @media (max-width: 768px) {
-  .section_aboutme, .section_education, .section_projects, .section_contact {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+  .section_aboutme,
+  .section_education,
+  .section_projects,
+  .section_contact {
     padding: 3rem;
   }
   h1 {
@@ -394,6 +402,8 @@ footer {
   h3 {
     font-size: 2.4rem;
   }
-  p {
+  p,
+  a {
     font-size: 1.6rem;
   }
+}

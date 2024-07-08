@@ -247,7 +247,6 @@ p {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 0.6rem;
 }
 
 .description_section_projects {
@@ -261,7 +260,7 @@ p {
 .github_link_container {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
 }
 
 .github_links_container {

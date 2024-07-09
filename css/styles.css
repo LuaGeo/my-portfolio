@@ -189,6 +189,10 @@ p {
   gap: 12rem;
 }
 
+.img_projects_container {
+  position: relative;
+}
+
 .img_projects {
   width: 100%;
   opacity: 1;
@@ -208,7 +212,6 @@ p {
 }
 
 .container {
-  position: relative;
   width: 50%;
 }
 

@@ -443,3 +443,8 @@ footer {
     overflow-x: hidden;
   }
 }
+
+.section_aboutme b,
+.section_aboutme strong {
+  font-weight: bold;
+}

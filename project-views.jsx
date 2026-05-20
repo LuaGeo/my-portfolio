@@ -1,142 +1,35 @@
-// ─── Tech Sphere ──────────────────────────────────────────────────────────────
-// 3D sphere of tech logos using Fibonacci-distributed points. Rotates
-// automatically and responds to drag.
+// ─── Tech Grid ────────────────────────────────────────────────────────────────
+const CAT_ORDER = ['lang', 'frontend', 'backend', 'data', 'ml', 'cloud', 'tool'];
+const CAT_LABEL = { lang: 'Langages', frontend: 'Frontend', backend: 'Backend', data: 'Data', ml: 'ML / IA', cloud: 'Cloud & Infra', tool: 'Outils' };
 
-function TechSphere({ tech }) {
-  const wrapRef = useRef(null);
-  const sphereRef = useRef(null);
-  const state = useRef({
-    rx: -10, ry: 0,
-    vx: 0,  vy: 0.18,
-    dragging: false, lastX: 0, lastY: 0,
-  });
-
-  // Fibonacci sphere distribution
-  const positions = useMemo(() => {
-    const n = tech.length;
-    const R = 200; // radius in px
-    const golden = Math.PI * (3 - Math.sqrt(5));
-    return tech.map((t, i) => {
-      const y = 1 - (i / (n - 1)) * 2;            // -1..1
-      const radiusAtY = Math.sqrt(1 - y * y);
-      const theta = golden * i;
-      const x = Math.cos(theta) * radiusAtY;
-      const z = Math.sin(theta) * radiusAtY;
-      return { x: x * R, y: y * R, z: z * R, tech: t };
+function TechGrid({ tech }) {
+  const byCategory = useMemo(() => {
+    const map = {};
+    tech.forEach(t => {
+      const c = t.cat || 'tool';
+      if (!map[c]) map[c] = [];
+      map[c].push(t);
     });
+    return map;
   }, [tech]);
 
-  useEffect(() => {
-    let raf;
-    const tick = () => {
-      const s = state.current;
-      if (!s.dragging) {
-        s.ry += s.vy;
-        // gentle decay for inertia
-        s.vy = s.vy * 0.985 + 0.18 * 0.015;
-        s.vx *= 0.92;
-        s.rx += s.vx;
-      }
-      // clamp rx
-      s.rx = Math.max(-60, Math.min(60, s.rx));
-      if (sphereRef.current) {
-        sphereRef.current.style.transform = `rotateX(${s.rx}deg) rotateY(${s.ry}deg)`;
-      }
-      // counter-rotate each tag to face viewer
-      const tags = sphereRef.current?.querySelectorAll('.sphere-tag');
-      if (tags) {
-        tags.forEach((tag) => {
-          const i = +tag.dataset.i;
-          const p = positions[i];
-          if (!p) return;
-          // depth-based opacity & scale
-          // approximate visible z after rotation
-          const rx = (s.rx * Math.PI) / 180;
-          const ry = (s.ry * Math.PI) / 180;
-          // rotate the original point
-          // Ry first then Rx (matches CSS rotateX(rotateY(p)))
-          const cosRy = Math.cos(ry), sinRy = Math.sin(ry);
-          const cosRx = Math.cos(rx), sinRx = Math.sin(rx);
-          // after rotateY
-          const x1 =  p.x * cosRy + p.z * sinRy;
-          const z1 = -p.x * sinRy + p.z * cosRy;
-          // after rotateX
-          const y2 =  p.y * cosRx - z1 * sinRx;
-          const z2 =  p.y * sinRx + z1 * cosRx;
-          const depth = (z2 + 220) / 440; // 0..1
-          const op = 0.35 + depth * 0.65;
-          const sc = 0.7 + depth * 0.5;
-          tag.style.opacity = op;
-          tag.style.zIndex = Math.round(depth * 1000);
-          tag.style.filter = `blur(${(1 - depth) * 1.2}px)`;
-          tag.querySelector('img').style.transform = `scale(${sc})`;
-        });
-      }
-      raf = requestAnimationFrame(tick);
-    };
-    raf = requestAnimationFrame(tick);
-    return () => cancelAnimationFrame(raf);
-  }, [positions]);
-
-  useEffect(() => {
-    const wrap = wrapRef.current;
-    if (!wrap) return;
-    const onDown = (e) => {
-      const s = state.current;
-      s.dragging = true;
-      s.lastX = (e.touches?.[0]?.clientX ?? e.clientX);
-      s.lastY = (e.touches?.[0]?.clientY ?? e.clientY);
-      wrap.classList.add('dragging');
-    };
-    const onMove = (e) => {
-      const s = state.current;
-      if (!s.dragging) return;
-      const x = (e.touches?.[0]?.clientX ?? e.clientX);
-      const y = (e.touches?.[0]?.clientY ?? e.clientY);
-      const dx = x - s.lastX;
-      const dy = y - s.lastY;
-      s.lastX = x; s.lastY = y;
-      s.ry += dx * 0.45;
-      s.rx -= dy * 0.45;
-      s.vy = dx * 0.06;
-      s.vx = -dy * 0.06;
-    };
-    const onUp = () => {
-      state.current.dragging = false;
-      wrap.classList.remove('dragging');
-    };
-    wrap.addEventListener('mousedown', onDown);
-    wrap.addEventListener('touchstart', onDown, { passive: true });
-    window.addEventListener('mousemove', onMove);
-    window.addEventListener('touchmove', onMove, { passive: true });
-    window.addEventListener('mouseup', onUp);
-    window.addEventListener('touchend', onUp);
-    return () => {
-      wrap.removeEventListener('mousedown', onDown);
-      wrap.removeEventListener('touchstart', onDown);
-      window.removeEventListener('mousemove', onMove);
-      window.removeEventListener('touchmove', onMove);
-      window.removeEventListener('mouseup', onUp);
-      window.removeEventListener('touchend', onUp);
-    };
-  }, []);
+  const cats = CAT_ORDER.filter(c => byCategory[c]);
 
   return (
-    <div className="sphere-wrap" ref={wrapRef}>
-      <div className="sphere" ref={sphereRef}>
-        {positions.map((p, i) => (
-          <div
-            key={p.tech.id}
-            className="sphere-tag"
-            data-i={i}
-            style={{ transform: `translate3d(${p.x}px, ${p.y}px, ${p.z}px)` }}
-            title={p.tech.name}
-          >
-            <img src={p.tech.src} alt={p.tech.name} />
-            <span className="label">{p.tech.name}</span>
+    <div className="tech-grid">
+      {cats.map(cat => (
+        <div key={cat} className="tech-category">
+          <div className="tech-cat-label">{CAT_LABEL[cat]}</div>
+          <div className="tech-chips">
+            {byCategory[cat].map(t => (
+              <div key={t.id} className="tech-chip">
+                <img src={t.src} alt={t.name} />
+                <span>{t.name}</span>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 }
@@ -314,4 +207,4 @@ function ProjectModal({ project, projects, lang, T, techIndex, onClose, onNaviga
   );
 }
 
-Object.assign(window, { TechSphere, ProjectCard, ProjectModal });
+Object.assign(window, { TechGrid, ProjectCard, ProjectModal });

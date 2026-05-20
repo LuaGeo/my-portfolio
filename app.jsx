@@ -23,12 +23,7 @@ function usePersistedState(key, fallback) {
 
 function App() {
   const [lang, setLang] = usePersistedState("ldo.lang", "fr");
-  const [theme, setTheme] = usePersistedState("ldo.theme", "dark");
   const [open, setOpen] = useState(null);
-
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-  }, [theme]);
 
   useReveal();
 
@@ -41,12 +36,7 @@ function App() {
   return (
     <>
       <Aurora />
-      <Toolbar
-        lang={lang}
-        setLang={setLang}
-        theme={theme}
-        setTheme={setTheme}
-      />
+      <Toolbar lang={lang} setLang={setLang} />
 
       <div className="shell">
         <Sidebar lang={lang} T={T} profileSrc="img/luana_deo2.PNG" />
@@ -118,7 +108,7 @@ function App() {
             </div>
             <p className="section-subtitle reveal">{T.techSubtitle[lang]}</p>
             <div className="reveal">
-              <TechSphere tech={PD_TECH} />
+              <TechGrid tech={PD_TECH} />
             </div>
           </section>
 

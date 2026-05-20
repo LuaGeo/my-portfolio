@@ -190,9 +190,6 @@ function ProjectCard({ project, lang, onOpen }) {
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
       </button>
       <div className="card-body">
-        <div className="card-tags">
-          {project.tags.map(tag => <span key={tag} className="card-tag">{tag}</span>)}
-        </div>
         <h3 className="card-title">{project.title[lang]}</h3>
         <p className="card-sub">{project.subtitle[lang]}</p>
       </div>
@@ -201,16 +198,24 @@ function ProjectCard({ project, lang, onOpen }) {
 }
 
 // ─── Modal ────────────────────────────────────────────────────────────────────
-function ProjectModal({ project, lang, T, techIndex, onClose }) {
+function ProjectModal({ project, projects, lang, T, techIndex, onClose, onNavigate }) {
+  const idx     = projects.findIndex(p => p.id === project.id);
+  const prev    = idx > 0               ? projects[idx - 1] : null;
+  const next    = idx < projects.length - 1 ? projects[idx + 1] : null;
+
   useEffect(() => {
-    const onKey = (e) => { if (e.key === 'Escape') onClose(); };
+    const onKey = (e) => {
+      if (e.key === 'Escape')      onClose();
+      if (e.key === 'ArrowLeft'  && prev) onNavigate(prev);
+      if (e.key === 'ArrowRight' && next) onNavigate(next);
+    };
     window.addEventListener('keydown', onKey);
     document.body.style.overflow = 'hidden';
     return () => {
       window.removeEventListener('keydown', onKey);
       document.body.style.overflow = '';
     };
-  }, [onClose]);
+  }, [onClose, onNavigate, prev, next]);
 
   if (!project) return null;
   const t = T.modal;
@@ -221,8 +226,24 @@ function ProjectModal({ project, lang, T, techIndex, onClose }) {
     return <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14 3h7v7M10 14 21 3M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"/></svg>;
   };
 
+  const NavBtn = ({ project: target, dir }) => (
+    <button
+      className={'modal-nav-btn modal-nav-' + dir}
+      onClick={(e) => { e.stopPropagation(); onNavigate(target); }}
+      aria-label={dir === 'prev' ? 'Projet précédent' : 'Projet suivant'}
+    >
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        {dir === 'prev'
+          ? <path d="M15 18l-6-6 6-6"/>
+          : <path d="M9 18l6-6-6-6"/>}
+      </svg>
+    </button>
+  );
+
   return (
     <div className="modal-backdrop" onClick={onClose}>
+      {prev && <NavBtn project={prev} dir="prev" />}
+      {next && <NavBtn project={next} dir="next" />}
       <div className="modal" onClick={(e) => e.stopPropagation()}>
         <div className="modal-media">
           {project.video ? (

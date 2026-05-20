@@ -118,11 +118,11 @@ function Aurora() {
       <div className="aurora-bg"></div>
       <svg className="aurora-svg" viewBox="0 0 1920 1080" preserveAspectRatio="none" aria-hidden="true">
         <defs>
-          <filter id="aurora-blur-1" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="70" />
+          <filter id="aurora-blur-1" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="100" />
           </filter>
-          <filter id="aurora-blur-2" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="90" />
+          <filter id="aurora-blur-2" x="-80%" y="-80%" width="260%" height="260%">
+            <feGaussianBlur stdDeviation="130" />
           </filter>
           <linearGradient id="aurora-grad-1" x1="0" y1="0" x2="1" y2="0">
             <stop offset="0"   stopColor="#22d3ee" stopOpacity="0" />
@@ -178,40 +178,6 @@ function useReveal() {
   }, []);
 }
 
-// Hover sound — generated via WebAudio so no external file
-function useHoverSound(enabled) {
-  const ctxRef = useRef(null);
-  useEffect(() => {
-    if (!enabled) return;
-    const onHover = (e) => {
-      const t = e.target;
-      if (!t || !t.closest) return;
-      const trigger = t.closest('.project-card, .sphere-tag, .social-btn, .modal-link, .contact-cta, .sidebar-nav a, .lang-switch button, .icon-btn');
-      if (!trigger || trigger.dataset.sounded === '1') return;
-      trigger.dataset.sounded = '1';
-      setTimeout(() => { trigger.dataset.sounded = '0'; }, 120);
-
-      try {
-        if (!ctxRef.current) ctxRef.current = new (window.AudioContext || window.webkitAudioContext)();
-        const ctx = ctxRef.current;
-        if (ctx.state === 'suspended') ctx.resume();
-        const o = ctx.createOscillator();
-        const g = ctx.createGain();
-        o.type = 'sine';
-        o.frequency.value = 880 + Math.random() * 180;
-        g.gain.value = 0;
-        o.connect(g); g.connect(ctx.destination);
-        const now = ctx.currentTime;
-        g.gain.linearRampToValueAtTime(0.04, now + 0.005);
-        g.gain.exponentialRampToValueAtTime(0.0001, now + 0.18);
-        o.start(now);
-        o.stop(now + 0.2);
-      } catch(err) { /* ignore */ }
-    };
-    document.addEventListener('mouseover', onHover);
-    return () => document.removeEventListener('mouseover', onHover);
-  }, [enabled]);
-}
 
 // ─── Sidebar ──────────────────────────────────────────────────────────────────
 function Sidebar({ lang, T, profileSrc }) {
@@ -257,7 +223,7 @@ function Sidebar({ lang, T, profileSrc }) {
 }
 
 // ─── Toolbar (lang + theme + sound) ───────────────────────────────────────────
-function Toolbar({ lang, setLang, theme, setTheme, sound, setSound }) {
+function Toolbar({ lang, setLang, theme, setTheme }) {
   return (
     <div className="toolbar">
       <div className="lang-switch" role="group" aria-label="Language">
@@ -268,13 +234,6 @@ function Toolbar({ lang, setLang, theme, setTheme, sound, setSound }) {
           </React.Fragment>
         ))}
       </div>
-      <button className={'icon-btn ' + (sound ? 'on' : '')} onClick={() => setSound(!sound)} aria-label="Toggle sound">
-        {sound ? (
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M19 5a10 10 0 0 1 0 14"/></svg>
-        ) : (
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M11 5 6 9H2v6h4l5 4V5z"/><line x1="22" y1="9" x2="16" y2="15"/><line x1="16" y1="9" x2="22" y2="15"/></svg>
-        )}
-      </button>
       <button className="icon-btn" onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')} aria-label="Toggle theme">
         {theme === 'dark' ? (
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
@@ -286,4 +245,4 @@ function Toolbar({ lang, setLang, theme, setTheme, sound, setSound }) {
   );
 }
 
-Object.assign(window, { Cursor, Aurora, Sidebar, Toolbar, useReveal, useHoverSound });
+Object.assign(window, { Cursor, Aurora, Sidebar, Toolbar, useReveal });

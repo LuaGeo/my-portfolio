@@ -9,60 +9,90 @@ function usePersistedState(key, fallback) {
     try {
       const raw = localStorage.getItem(key);
       return raw !== null ? JSON.parse(raw) : fallback;
-    } catch { return fallback; }
+    } catch {
+      return fallback;
+    }
   });
   useEffect(() => {
-    try { localStorage.setItem(key, JSON.stringify(v)); } catch {}
+    try {
+      localStorage.setItem(key, JSON.stringify(v));
+    } catch {}
   }, [key, v]);
   return [v, setV];
 }
 
 function App() {
-  const [lang, setLang]     = usePersistedState('ldo.lang',   'fr');
-  const [theme, setTheme]   = usePersistedState('ldo.theme',  'dark');
-  const [sound, setSound]   = usePersistedState('ldo.sound',  false);
-  const [open, setOpen]     = useState(null);
+  const [lang, setLang] = usePersistedState("ldo.lang", "fr");
+  const [theme, setTheme] = usePersistedState("ldo.theme", "dark");
+  const [open, setOpen] = useState(null);
 
   useEffect(() => {
     document.documentElement.dataset.theme = theme;
   }, [theme]);
 
   useReveal();
-  useHoverSound(sound);
 
-  const techIndex = useMemo(() => Object.fromEntries(PD_TECH.map(t => [t.id, t])), []);
+  const techIndex = useMemo(
+    () => Object.fromEntries(PD_TECH.map((t) => [t.id, t])),
+    [],
+  );
   const T = PD_T;
 
   return (
     <>
       <Aurora />
       <Toolbar
-        lang={lang} setLang={setLang}
-        theme={theme} setTheme={setTheme}
-        sound={sound} setSound={setSound}
+        lang={lang}
+        setLang={setLang}
+        theme={theme}
+        setTheme={setTheme}
       />
 
       <div className="shell">
-        <Sidebar lang={lang} T={T} profileSrc="assets/profile.png" />
+        <Sidebar lang={lang} T={T} profileSrc="img/luana_deo2.PNG" />
 
         <main className="main">
           {/* HERO */}
           <section className="section hero" id="about" data-screen-label="Hero">
             <div className="hero-eyebrow reveal">
-              <span className="brand-dot" style={{marginRight: 4}}></span>
+              <span className="brand-dot" style={{ marginRight: 4 }}></span>
               {T.available[lang]}
             </div>
             <h1 className="reveal">
-              Data & IA, <em>par conviction.</em><br/>
+              Data & IA, <em>par conviction.</em>
+              <br />
               Fullstack, <em>par passion.</em>
             </h1>
             <p className="lead reveal">{T.bio[lang]}</p>
 
             <div className="hero-meta">
-              <div><b>7+</b>&nbsp;&nbsp;{lang === 'fr' ? 'projets livrés' : lang === 'en' ? 'shipped projects' : 'projetos entregues'}</div>
-              <div><b>5+</b>&nbsp;&nbsp;{lang === 'fr' ? 'années code' : lang === 'en' ? 'years coding' : 'anos de código'}</div>
-              <div><b>Paris</b>&nbsp;&nbsp;{lang === 'fr' ? '· basée à' : lang === 'en' ? '· based in' : '· baseada em'}</div>
-              <div><b>FR · EN · PT</b></div>
+              <div>
+                {lang === "fr"
+                  ? "projets livrés"
+                  : lang === "en"
+                    ? "shipped projects"
+                    : "projetos entregues"}
+                &nbsp;&nbsp;<b>8+</b>
+              </div>
+              <div>
+                {lang === "fr"
+                  ? "années code"
+                  : lang === "en"
+                    ? "years coding"
+                    : "anos de código"}
+                &nbsp;&nbsp;<b>5+</b>
+              </div>
+              <div>
+                {lang === "fr"
+                  ? "· basée à"
+                  : lang === "en"
+                    ? "· based in"
+                    : "· localização"}
+                &nbsp;&nbsp;<b>Paris</b>
+              </div>
+              <div>
+                <b>FR · EN · PT</b>
+              </div>
             </div>
             <div className="hero-scroll">SCROLL</div>
           </section>
@@ -74,7 +104,9 @@ function App() {
               <h2 className="section-title">{T.aboutTitle[lang]}</h2>
             </div>
             <div className="about-body reveal">
-              {T.aboutBody[lang].map((p, i) => <p key={i}>{p}</p>)}
+              {T.aboutBody[lang].map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
           </section>
 
@@ -96,9 +128,11 @@ function App() {
               <span className="section-num">03</span>
               <h2 className="section-title">{T.projectsTitle[lang]}</h2>
             </div>
-            <p className="section-subtitle reveal">{T.projectsSubtitle[lang]}</p>
+            <p className="section-subtitle reveal">
+              {T.projectsSubtitle[lang]}
+            </p>
             <div className="project-grid">
-              {PD_PROJECTS.map(p => (
+              {PD_PROJECTS.map((p) => (
                 <div key={p.id} className="reveal">
                   <ProjectCard project={p} lang={lang} onOpen={setOpen} />
                 </div>
@@ -118,16 +152,32 @@ function App() {
               <div>
                 <h3>ldeoliveiratech@gmail.com</h3>
                 <p>
-                  {lang === 'fr'
+                  {lang === "fr"
                     ? "Je réponds en général sous 24h. Pour les missions, projets ou simples échanges, n'hésite pas."
-                    : lang === 'en'
-                    ? "I usually reply within 24h. For missions, projects or just a chat, feel free to reach out."
-                    : "Costumo responder em 24h. Para missões, projetos ou só pra trocar uma ideia, manda mensagem."}
+                    : lang === "en"
+                      ? "I usually reply within 24h. For missions, projects or just a chat, feel free to reach out."
+                      : "Costumo responder em 24h. Para missões, projetos ou só pra trocar uma ideia, manda mensagem."}
                 </p>
               </div>
-              <a className="contact-cta" href="mailto:ldeoliveiratech@gmail.com">
-                {lang === 'fr' ? 'Envoyer un message' : lang === 'en' ? 'Send a message' : 'Enviar mensagem'}
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+              <a
+                className="contact-cta"
+                href="mailto:ldeoliveiratech@gmail.com"
+              >
+                {lang === "fr"
+                  ? "Envoyer un message"
+                  : lang === "en"
+                    ? "Send a message"
+                    : "Enviar mensagem"}
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M5 12h14M13 5l7 7-7 7" />
+                </svg>
               </a>
 
               <div className="contact-links">
@@ -135,11 +185,19 @@ function App() {
                   <span className="label">EMAIL</span>
                   <span>ldeoliveiratech@gmail.com</span>
                 </a>
-                <a href="https://www.linkedin.com/in/luanardeoliveira/" target="_blank" rel="noreferrer">
+                <a
+                  href="https://www.linkedin.com/in/luanardeoliveira/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <span className="label">LINKEDIN</span>
                   <span>linkedin.com/in/luanardeoliveira</span>
                 </a>
-                <a href="https://github.com/LuaGeo/" target="_blank" rel="noreferrer">
+                <a
+                  href="https://github.com/LuaGeo/"
+                  target="_blank"
+                  rel="noreferrer"
+                >
                   <span className="label">GITHUB</span>
                   <span>github.com/LuaGeo</span>
                 </a>
@@ -154,9 +212,19 @@ function App() {
         </main>
       </div>
 
-      {open && <ProjectModal project={open} lang={lang} T={T} techIndex={techIndex} onClose={() => setOpen(null)} />}
+      {open && (
+        <ProjectModal
+          project={open}
+          projects={PD_PROJECTS}
+          lang={lang}
+          T={T}
+          techIndex={techIndex}
+          onClose={() => setOpen(null)}
+          onNavigate={setOpen}
+        />
+      )}
     </>
   );
 }
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+ReactDOM.createRoot(document.getElementById("root")).render(<App />);

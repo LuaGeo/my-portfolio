@@ -106,7 +106,6 @@ function App() {
               <span className="section-num">02</span>
               <h2 className="section-title">{T.techTitle[lang]}</h2>
             </div>
-            <p className="section-subtitle reveal">{T.techSubtitle[lang]}</p>
             <div className="reveal">
               <TechGrid tech={PD_TECH} />
             </div>

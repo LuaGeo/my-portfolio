@@ -585,11 +585,6 @@ const T = {
     en: "Technical stack",
     pt: "Stack técnica",
   },
-  techSubtitle: {
-    fr: "Glisse la sphère — chaque outil que je manipule au quotidien.",
-    en: "Drag the sphere — every tool I work with day-to-day.",
-    pt: "Arraste a esfera — cada ferramenta que uso no dia a dia.",
-  },
   projectsTitle: {
     fr: "Projets sélectionnés",
     en: "Selected projects",

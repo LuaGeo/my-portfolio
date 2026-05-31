@@ -1,6 +1,6 @@
 // ─── Tech Grid ────────────────────────────────────────────────────────────────
-const CAT_ORDER = ['lang', 'frontend', 'backend', 'data', 'ml', 'cloud', 'tool'];
-const CAT_LABEL = { lang: 'Langages', frontend: 'Frontend', backend: 'Backend', data: 'Data', ml: 'ML / IA', cloud: 'Cloud & Infra', tool: 'Outils' };
+const CAT_ORDER = ['lang', 'web', 'data', 'ml', 'cloud'];
+const CAT_LABEL = { lang: 'Langages', web: 'Web & API', data: 'Data', ml: 'ML / IA', cloud: 'Cloud & Infra' };
 
 function TechGrid({ tech }) {
   const byCategory = useMemo(() => {

@@ -1,102 +1,45 @@
 // ─── Project & translation data ───────────────────────────────────────────────
 
 const TECH = [
-  { id: "python", name: "Python", src: "assets/tech/python.png", cat: "lang" },
-  { id: "sql", name: "SQL", src: "assets/tech/sql.png", cat: "data" },
-  { id: "mysql", name: "MySQL", src: "assets/tech/mysql.png", cat: "data" },
-  {
-    id: "mongodb",
-    name: "MongoDB",
-    src: "assets/tech/mongodb.png",
-    cat: "data",
-  },
-  { id: "pandas", name: "Pandas", src: "assets/tech/pandas.png", cat: "data" },
-  { id: "numpy", name: "NumPy", src: "assets/tech/numpy.png", cat: "data" },
-  {
-    id: "sklearn",
-    name: "scikit-learn",
-    src: "assets/tech/scikitlearn.png",
-    cat: "ml",
-  },
-  {
-    id: "pytorch",
-    name: "PyTorch",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",
-    cat: "ml",
-  },
-  {
-    id: "matplotlib",
-    name: "Matplotlib",
-    src: "assets/tech/matplotlib.png",
-    cat: "data",
-  },
-  {
-    id: "seaborn",
-    name: "Seaborn",
-    src: "assets/tech/seaborn.png",
-    cat: "data",
-  },
-  { id: "plotly", name: "Plotly", src: "assets/tech/plotly.png", cat: "data" },
-  {
-    id: "tableau",
-    name: "Tableau",
-    src: "assets/tech/tableau.png",
-    cat: "data",
-  },
-  {
-    id: "powerbi",
-    name: "Power BI",
-    src: "assets/tech/powerbi.png",
-    cat: "data",
-  },
-  { id: "html", name: "HTML5", src: "assets/tech/html.png", cat: "web" },
-  { id: "css", name: "CSS3", src: "assets/tech/css.png", cat: "web" },
-  {
-    id: "js",
-    name: "JavaScript",
-    src: "assets/tech/javascript.png",
-    cat: "web",
-  },
-  {
-    id: "ts",
-    name: "TypeScript",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
-    cat: "web",
-  },
-  { id: "react", name: "React", src: "assets/tech/react.png", cat: "web" },
-  { id: "next", name: "Next.js", src: "assets/tech/next.png", cat: "web" },
-  {
-    id: "tailwind",
-    name: "Tailwind CSS",
-    src: "assets/tech/tailwind.png",
-    cat: "web",
-  },
-  {
-    id: "fastapi",
-    name: "FastAPI",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
-    cat: "web",
-  },
-  {
-    id: "docker",
-    name: "Docker",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-    cat: "cloud",
-  },
-  {
-    id: "git",
-    name: "Git",
-    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-    cat: "cloud",
-  },
-  { id: "gcp", name: "Google Cloud", src: "assets/tech/gcp.png", cat: "cloud" },
-  { id: "aws", name: "AWS", src: "assets/tech/aws.png", cat: "cloud" },
-  {
-    id: "n8n",
-    name: "n8n",
-    src: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/n8n.svg",
-    cat: "cloud",
-  },
+  // Langages
+  { id: "python",     name: "Python",      src: "assets/tech/python.png",      cat: "lang" },
+  { id: "javascript", name: "JavaScript",  src: "assets/tech/javascript.png",  cat: "lang" },
+  { id: "typescript", name: "TypeScript",  src: "assets/tech/typescript.png",  cat: "lang" },
+
+  // Web & API
+  { id: "fastapi",       name: "FastAPI",       src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",   cat: "web" },
+  { id: "django",        name: "Django",        src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg",         cat: "web" },
+  { id: "flask",         name: "Flask",         src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg",        cat: "web" },
+  { id: "react",         name: "React",         src: "assets/tech/react.png",                                                              cat: "web" },
+  { id: "next",          name: "Next.js",       src: "assets/tech/next.png",                                                               cat: "web" },
+  { id: "react-native",  name: "React Native",  src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",        cat: "web" },
+  { id: "tailwind",      name: "Tailwind CSS",  src: "assets/tech/tailwind.png",                                                           cat: "web" },
+
+  // Data
+  { id: "sql",       name: "SQL",       src: "assets/tech/sql.png",       cat: "data" },
+  { id: "mysql",     name: "MySQL",     src: "assets/tech/mysql.png",     cat: "data" },
+  { id: "mongodb",   name: "MongoDB",   src: "assets/tech/mongodb.png",   cat: "data" },
+  { id: "pandas",    name: "Pandas",    src: "assets/tech/pandas.png",    cat: "data" },
+  { id: "numpy",     name: "NumPy",     src: "assets/tech/numpy.png",     cat: "data" },
+  { id: "matplotlib",name: "Matplotlib",src: "assets/tech/matplotlib.png",cat: "data" },
+  { id: "seaborn",   name: "Seaborn",   src: "assets/tech/seaborn.png",   cat: "data" },
+  { id: "plotly",    name: "Plotly",    src: "assets/tech/plotly.png",    cat: "data" },
+  { id: "tableau",   name: "Tableau",   src: "assets/tech/tableau.png",   cat: "data" },
+  { id: "powerbi",   name: "Power BI",  src: "assets/tech/powerbi.png",   cat: "data" },
+  { id: "bigquery",  name: "BigQuery",  src: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/googlebigquery.svg", cat: "data" },
+  { id: "streamlit", name: "Streamlit", src: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/streamlit.svg",     cat: "data" },
+
+  // ML / IA
+  { id: "sklearn",  name: "Scikit-learn", src: "assets/tech/scikitlearn.png",                                                                      cat: "ml" },
+  { id: "pytorch",  name: "PyTorch",      src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg",                  cat: "ml" },
+
+  // Cloud & Infra
+  { id: "docker",   name: "Docker",       src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",  cat: "cloud" },
+  { id: "git",      name: "Git",          src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",        cat: "cloud" },
+  { id: "gcp",      name: "Google Cloud", src: "assets/tech/gcp.png",                                                            cat: "cloud" },
+  { id: "aws",      name: "AWS",          src: "assets/tech/aws.png",                                                            cat: "cloud" },
+  { id: "n8n",      name: "n8n",          src: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/n8n.svg",            cat: "cloud" },
+  { id: "railway",  name: "Railway",      src: "https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/railway.svg",        cat: "cloud" },
 ];
 
 const PROJECTS = [
@@ -400,7 +343,7 @@ const PROJECTS = [
         "Backend Python/Flask e frontend React com visualizações Plotly.",
       ],
     },
-    stack: ["python", "sklearn", "pandas", "react", "js"],
+    stack: ["python", "sklearn", "pandas", "react", "javascript"],
     stackExtra: ["Flask", "Plotly", "Streamlit"],
     links: [
       {

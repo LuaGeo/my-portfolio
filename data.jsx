@@ -601,6 +601,11 @@ const T = {
     en: "From Earth to the cloud.",
     pt: "Da Terra para a nuvem.",
   },
+  bio2: {
+    fr: "Ingénieure de formation (Géosciences), fullstack par passion, Data & IA par conviction. J'aime construire des produits qui mêlent rigueur scientifique et expérience soignée.",
+    en: "Engineer by training (Geosciences), fullstack by passion, Data & AI by conviction. I love building products that pair scientific rigour with thoughtful UX.",
+    pt: "Engenheira de formação (Geociências), fullstack por paixão, Data & IA por convicção. Adoro construir produtos que unem rigor científico e UX cuidada.",
+  },
   aboutTitle: {
     fr: "À propos",
     en: "About me",

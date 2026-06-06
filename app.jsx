@@ -53,7 +53,7 @@ function App() {
               <br />
               Fullstack, <em>par passion.</em>
             </h1>
-            <p className="lead reveal">{T.bio[lang]}</p>
+            <p className="lead reveal">{T.bio2[lang]}</p>
 
             <div className="hero-meta">
               <div>

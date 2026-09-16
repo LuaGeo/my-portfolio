@@ -2,6 +2,8 @@
 
 const TECH = [
   // Langages
+  { id: "html", name: "HTML", src: "assets/tech/html.png", cat: "lang" },
+  { id: "css", name: "CSS", src: "assets/tech/css.png", cat: "lang" },
   { id: "python", name: "Python", src: "assets/tech/python.png", cat: "lang" },
   {
     id: "javascript",
@@ -37,6 +39,18 @@ const TECH = [
   },
   { id: "react", name: "React", src: "assets/tech/react.png", cat: "web" },
   { id: "next", name: "Next.js", src: "assets/tech/next.png", cat: "web" },
+  {
+    id: "nodejs",
+    name: "Node.js",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+    cat: "web",
+  },
+  {
+    id: "express",
+    name: "Express",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
+    cat: "web",
+  },
   {
     id: "react-native",
     name: "React Native",
@@ -144,6 +158,53 @@ const TECH = [
 
 const PROJECTS = [
   {
+    id: "ia-solidaire",
+    image: "assets/projects/iasolidaire.png",
+    modalImage: "assets/projects/raw/iasolidaire.png",
+    tags: ["Frontend", "Vanilla JS", "Multilingue"],
+    title: {
+      fr: "Collectif IA Solidaire",
+      en: "Collectif IA Solidaire",
+      pt: "Collectif IA Solidaire",
+    },
+    subtitle: {
+      fr: "Site vitrine associatif / Multilingue",
+      en: "Association showcase site / Multilingual",
+      pt: "Site institucional / Multilíngue",
+    },
+    problem: {
+      fr: "Donner une vitrine claire et maintenable par l'équipe (sans build ni dépendance) à un collectif qui aide les organisations à but non lucratif à adopter et gouverner l'IA de façon éthique.",
+      en: "Give a collective that helps non-profits adopt and govern AI ethically a clear showcase site the team itself can maintain - no build step, no dependencies.",
+      pt: "Dar a um coletivo que ajuda organizações sem fins lucrativos a adotar e governar a IA de forma ética uma vitrine clara, mantida pela própria equipe - sem build nem dependências.",
+    },
+    description: {
+      fr: [
+        "Site vitrine multilingue (FR/EN/PT) en HTML/CSS/JS vanilla, sans framework ni étape de build, pour rester facilement modifiable par l'équipe.",
+        'Diagramme de Venn interactif en SVG sur la page "Le collectif", pour illustrer visuellement le positionnement de la gouvernance éclairée de l\'IA.',
+        "Composants JS partagés (navigation, pied de page) et design tokens CSS pour une identité visuelle cohérente sur toutes les pages.",
+      ],
+      en: [
+        "Multilingual (FR/EN/PT) showcase site in vanilla HTML/CSS/JS, with no framework or build step, so the team can edit it directly.",
+        'Interactive SVG Venn diagram on the "Le collectif" page, visually mapping the collective\'s approach to enlightened AI governance.',
+        "Shared JS components (nav, footer) and CSS design tokens for a consistent look across every page.",
+      ],
+      pt: [
+        "Site institucional multilíngue (FR/EN/PT) em HTML/CSS/JS puro, sem framework nem etapa de build, para permanecer editável diretamente pela equipe.",
+        'Diagrama de Venn interativo em SVG na página "Le collectif", ilustrando visualmente a abordagem do coletivo para a governança esclarecida da IA.',
+        "Componentes JS compartilhados (navegação, rodapé) e design tokens CSS para uma identidade visual consistente em todas as páginas.",
+      ],
+    },
+    stack: ["html", "css", "javascript"],
+    stackExtra: [],
+    links: [
+      {
+        kind: "demo",
+        url: "https://collectifiasolidaire.fr/",
+        label: { fr: "Site en ligne", en: "Live site", pt: "Site online" },
+      },
+    ],
+  },
+  {
     id: "n8n-rdv",
     image: "assets/projects/n8n-rdv.png",
     modalImage: "assets/projects/raw/n8n-rdv.png",
@@ -159,24 +220,24 @@ const PROJECTS = [
       pt: "Automação n8n / Hospedagem AWS",
     },
     problem: {
-      fr: "Les créneaux de rendez-vous en préfecture disparaissent en quelques secondes. L'enjeu : surveiller en continu les disponibilités et réserver automatiquement dès qu'un créneau s'ouvre — sans infrastructure coûteuse.",
-      en: "Prefecture appointment slots vanish within seconds of appearing. The goal: continuously monitor availability and automatically book as soon as a slot opens — without expensive infrastructure.",
-      pt: "As vagas de agendamento na prefeitura somem em segundos. O desafio: monitorar continuamente as disponibilidades e reservar automaticamente assim que uma vaga aparecer — sem infraestrutura cara.",
+      fr: "Les créneaux de rendez-vous en préfecture disparaissent en quelques secondes. L'enjeu : surveiller en continu les disponibilités et réserver automatiquement dès qu'un créneau s'ouvre - sans infrastructure coûteuse.",
+      en: "Prefecture appointment slots vanish within seconds of appearing. The goal: continuously monitor availability and automatically book as soon as a slot opens - without expensive infrastructure.",
+      pt: "As vagas de agendamento na prefeitura somem em segundos. O desafio: monitorar continuamente as disponibilidades e reservar automaticamente assim que uma vaga aparecer - sem infraestrutura cara.",
     },
     description: {
       fr: [
-        "Workflow n8n surveille en continu le portail préfecture et envoie une alerte Telegram avec le lien direct dès qu'un créneau se libère — la réservation reste manuelle.",
-        "Hébergement sur AWS EC2 t2.micro (Free Tier) avec Docker Compose — coût quasi nul, workflow actif 24/7.",
+        "Workflow n8n surveille en continu le portail préfecture et envoie une alerte Telegram avec le lien direct dès qu'un créneau se libère - la réservation reste manuelle.",
+        "Hébergement sur AWS EC2 t2.micro (Free Tier) avec Docker Compose - coût quasi nul, workflow actif 24/7.",
         "Intégration Google Sheets via OAuth2 pour le suivi des disponibilités ; ngrok assure le tunnel HTTPS requis par l'API Google.",
       ],
       en: [
-        "n8n workflow continuously watches the prefecture portal and fires a Telegram alert with a direct link the moment a slot opens — booking is then done manually.",
-        "Hosted on AWS EC2 t2.micro (Free Tier) with Docker Compose — near-zero cost, workflow running 24/7.",
+        "n8n workflow continuously watches the prefecture portal and fires a Telegram alert with a direct link the moment a slot opens - booking is then done manually.",
+        "Hosted on AWS EC2 t2.micro (Free Tier) with Docker Compose - near-zero cost, workflow running 24/7.",
         "Google Sheets integration via OAuth2 to track availability; ngrok provides the HTTPS tunnel required by the Google API.",
       ],
       pt: [
-        "Workflow n8n monitora continuamente o portal da prefeitura e dispara um alerta no Telegram com o link direto assim que uma vaga surge — o agendamento é feito manualmente.",
-        "Hospedado em AWS EC2 t2.micro (Free Tier) com Docker Compose — custo quase zero, workflow ativo 24/7.",
+        "Workflow n8n monitora continuamente o portal da prefeitura e dispara um alerta no Telegram com o link direto assim que uma vaga surge - o agendamento é feito manualmente.",
+        "Hospedado em AWS EC2 t2.micro (Free Tier) com Docker Compose - custo quase zero, workflow ativo 24/7.",
         "Integração com Google Sheets via OAuth2 para rastrear as disponibilidades; ngrok fornece o túnel HTTPS exigido pela API Google.",
       ],
     },
@@ -206,9 +267,9 @@ const PROJECTS = [
       pt: "Data / OCR / Backend / Frontend",
     },
     problem: {
-      fr: "Comparer rapidement deux versions d'un document PDF — y compris des PDF scannés — et visualiser précisément ce qui a été ajouté, supprimé ou modifié.",
-      en: "Quickly compare two versions of a PDF — including scanned ones — and clearly visualise everything that was added, removed or modified.",
-      pt: "Comparar rapidamente duas versões de um PDF — inclusive escaneados — e visualizar com precisão o que foi adicionado, removido ou modificado.",
+      fr: "Comparer rapidement deux versions d'un document PDF - y compris des PDF scannés - et visualiser précisément ce qui a été ajouté, supprimé ou modifié.",
+      en: "Quickly compare two versions of a PDF - including scanned ones - and clearly visualise everything that was added, removed or modified.",
+      pt: "Comparar rapidamente duas versões de um PDF - inclusive escaneados - e visualizar com precisão o que foi adicionado, removido ou modificado.",
     },
     description: {
       fr: [
@@ -308,9 +369,9 @@ const PROJECTS = [
     modalImage: "assets/projects/raw/wlab.png",
     tags: ["ML", "Healthcare"],
     title: {
-      fr: "Wlab — Prédiction du cancer du sein",
-      en: "Wlab — Breast Cancer Prediction",
-      pt: "Wlab — Predição de câncer de mama",
+      fr: "Wlab - Prédiction du cancer du sein",
+      en: "Wlab - Breast Cancer Prediction",
+      pt: "Wlab - Predição de câncer de mama",
     },
     subtitle: {
       fr: "Machine Learning / Classification médicale",
@@ -514,7 +575,7 @@ const PROJECTS = [
       ],
     },
     stack: ["python", "pandas", "numpy", "tableau"],
-    stackExtra: ["Requests", "BeautifulSoup", "Faker"],
+    stackExtra: [],
     links: [
       {
         kind: "demo",
@@ -567,6 +628,112 @@ const PROJECTS = [
         kind: "docs",
         url: "https://www.canva.com/design/DAGKb9BGl3U/-B_gaB8_1Z6IFYqYbdG8WQ/view",
         label: { fr: "Présentation", en: "Slides", pt: "Apresentação" },
+      },
+    ],
+  },
+  {
+    id: "vyv-test-technique",
+    image: "assets/projects/test_technique_groupe_vyv.png",
+    modalImage: "assets/projects/raw/test_technique_groupe_vyv.png",
+    tags: ["Data", "Dataviz"],
+    title: {
+      fr: "Groupe VYV - Test technique",
+      en: "Groupe VYV - Technical Test",
+      pt: "Groupe VYV - Teste técnico",
+    },
+    subtitle: {
+      fr: "Data / Visualisation Power BI",
+      en: "Data / Power BI visualisation",
+      pt: "Data / Visualização Power BI",
+    },
+    problem: {
+      fr: "Test technique pour l'alternance Data à la Direction Données de l'UMG (Groupe VYV) : à partir d'un jeu de données fictif de prestations dentaires, produire en temps limité des visualisations Power BI exploitables pour la gestion des bénéficiaires et des soins.",
+      en: "Technical test for a Data apprenticeship at UMG's Data Direction (Groupe VYV): from a fictional dental-claims dataset, deliver, under time constraint, actionable Power BI visuals for managing beneficiaries and care.",
+      pt: "Teste técnico para o estágio de Dados na Direção de Dados da UMG (Groupe VYV): a partir de um conjunto de dados fictício de sinistros odontológicos, entregar, em tempo limitado, visualizações Power BI acionáveis para a gestão de beneficiários e cuidados.",
+    },
+    description: {
+      fr: [
+        "Préparation des données : recodage de l'âge en tranches et regroupement des libellés de soins en catégories exploitables.",
+        "Dashboard Power BI : nombre de bénéficiaires, répartition par âge/formule/offre, dépense moyenne engagée par type de soin.",
+        "Colonne calculée du reste à charge (RAC = DE − Mttro − Mttrc) pour analyser l'incidence de la formule de garantie sur le reste à charge du bénéficiaire.",
+      ],
+      en: [
+        "Data prep: recoded age into brackets and consolidated care-type labels into actionable categories.",
+        "Power BI dashboard: beneficiary count, breakdown by age/plan/offer, average spend by care type.",
+        "Calculated out-of-pocket column (RAC = DE − Mttro − Mttrc) to analyse how the guarantee plan affects the beneficiary's out-of-pocket cost.",
+      ],
+      pt: [
+        "Preparação dos dados: idade recodificada em faixas e rótulos de cuidados agrupados em categorias acionáveis.",
+        "Dashboard Power BI: número de beneficiários, distribuição por idade/plano/oferta, gasto médio por tipo de cuidado.",
+        "Coluna calculada de coparticipação (RAC = DE − Mttro − Mttrc) para analisar a incidência do plano de garantia sobre a coparticipação do beneficiário.",
+      ],
+    },
+    stack: ["powerbi"],
+    stackExtra: ["Power Query", "DAX"],
+    links: [],
+  },
+  {
+    id: "sixt",
+    image: "assets/projects/sixt.png",
+    modalImage: "assets/projects/raw/sixt.png",
+    tags: ["Fullstack", "Data", "Scraping"],
+    title: {
+      fr: "Sixt - Clone de location de véhicules",
+      en: "Sixt - Car Rental Clone",
+      pt: "Sixt - Clone de aluguel de carros",
+    },
+    subtitle: {
+      fr: "Fullstack / Node.js / MongoDB / Scraping",
+      en: "Fullstack / Node.js / MongoDB / Scraping",
+      pt: "Fullstack / Node.js / MongoDB / Scraping",
+    },
+    problem: {
+      fr: "Reproduire la plateforme de location Sixt avec un catalogue de véhicules crédible plutôt que des données figées à la main, et remettre d'aplomb un frontend hérité (filtres cassés, modale qui plante, mise en page non responsive).",
+      en: "Rebuild the Sixt rental platform with a credible vehicle catalogue instead of hand-typed placeholder data, and fix an inherited frontend riddled with broken filters, a crashing modal, and a non-responsive layout.",
+      pt: "Reproduzir a plataforma de aluguel Sixt com um catálogo de veículos crível em vez de dados fixos digitados à mão, e corrigir um frontend herdado com filtros quebrados, modal que travava e layout não responsivo.",
+    },
+    description: {
+      fr: [
+        "Backend Node.js/Express et MongoDB maison, qui remplace l'API du bootcamp d'origine (clé expirée) pour servir agences, catalogue et configuration de location.",
+        "Catalogue de 80 véhicules généré automatiquement à partir d'une base scrappée (carwiki.io) : marque, modèle, photo, puissance et dimensions réels ; prix, catégorie et caractéristiques déduits par des règles et une formule de tarification documentée.",
+        "Corrections fullstack : filtre par carrosserie, modale de sélection qui plantait, tri par prix, et refonte responsive complète du site (mobile → desktop).",
+      ],
+      en: [
+        "Custom Node.js/Express + MongoDB backend replacing the original bootcamp API (expired key) to serve locations, the vehicle catalogue and rental configuration.",
+        "Catalogue of 80 vehicles generated automatically from a scraped database (carwiki.io): real brand, model, photo, power and dimensions; price, category and specs derived through rules and a documented pricing formula.",
+        "Fullstack fixes: broken body-type filter, a crashing selection modal, price sorting, and a full responsive redesign (mobile → desktop).",
+      ],
+      pt: [
+        "Backend próprio em Node.js/Express e MongoDB, substituindo a API original do bootcamp (chave expirada) para servir agências, catálogo e configuração de aluguel.",
+        "Catálogo de 80 veículos gerado automaticamente a partir de uma base raspada (carwiki.io): marca, modelo, foto, potência e dimensões reais; preço, categoria e especificações deduzidos por regras e uma fórmula de precificação documentada.",
+        "Correções fullstack: filtro por carroceria quebrado, modal de seleção que travava, ordenação por preço, e redesign responsivo completo (mobile → desktop).",
+      ],
+    },
+    stack: ["react", "nodejs", "express", "mongodb"],
+    stackExtra: ["Vite"],
+    links: [
+      {
+        kind: "demo",
+        url: "https://luana-deoliveira-sixt.netlify.app/",
+        label: { fr: "Démo Netlify", en: "Netlify demo", pt: "Demo Netlify" },
+      },
+      {
+        kind: "github",
+        url: "https://github.com/LuaGeo/sixt-frontend",
+        label: {
+          fr: "GitHub Frontend",
+          en: "GitHub Frontend",
+          pt: "GitHub Frontend",
+        },
+      },
+      {
+        kind: "github",
+        url: "https://github.com/LuaGeo/sixt-backend",
+        label: {
+          fr: "GitHub Backend",
+          en: "GitHub Backend",
+          pt: "GitHub Backend",
+        },
       },
     ],
   },

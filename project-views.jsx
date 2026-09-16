@@ -150,57 +150,61 @@ function ProjectModal({ project, projects, lang, T, techIndex, onClose, onNaviga
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </button>
         <div className="modal-body">
-          <div className="modal-tags">
-            {project.tags.map(tag => <span key={tag} className="card-tag" style={{background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text-2)'}}>{tag}</span>)}
-          </div>
-          <h2>{project.title[lang]}</h2>
-          <div className="modal-sub">{project.subtitle[lang]}</div>
+          <div className="modal-scroll">
+            <div className="modal-tags">
+              {project.tags.map(tag => <span key={tag} className="card-tag" style={{background: 'var(--surface)', border: '1px solid var(--border)', color: 'var(--text-2)'}}>{tag}</span>)}
+            </div>
+            <h2>{project.title[lang]}</h2>
+            <div className="modal-sub">{project.subtitle[lang]}</div>
 
-          <div className="modal-block">
-            <h4>{t.context[lang]}</h4>
-            <p>{project.problem[lang]}</p>
-          </div>
+            <div className="modal-block">
+              <h4>{t.context[lang]}</h4>
+              <p>{project.problem[lang]}</p>
+            </div>
 
-          <div className="modal-block">
-            <h4>{t.overview[lang]}</h4>
-            <ul>
-              {project.description[lang].map((line, i) => <li key={i}>{line}</li>)}
-            </ul>
-          </div>
+            <div className="modal-block">
+              <h4>{t.overview[lang]}</h4>
+              <ul>
+                {project.description[lang].map((line, i) => <li key={i}>{line}</li>)}
+              </ul>
+            </div>
 
-          <div className="modal-block">
-            <h4>{t.stack[lang]}</h4>
-            <div className="modal-stack">
-              {project.stack.map(id => {
-                const tech = techIndex[id];
-                if (!tech) return null;
-                return (
-                  <span key={id} className="chip">
-                    <img src={tech.src} alt={tech.name} />
-                    {tech.name}
-                  </span>
-                );
-              })}
-              {project.stackExtra.map(name => (
-                <span key={name} className="chip text-only">{name}</span>
-              ))}
+            <div className="modal-block">
+              <h4>{t.stack[lang]}</h4>
+              <div className="modal-stack">
+                {project.stack.map(id => {
+                  const tech = techIndex[id];
+                  if (!tech) return null;
+                  return (
+                    <span key={id} className="chip">
+                      <img src={tech.src} alt={tech.name} />
+                      {tech.name}
+                    </span>
+                  );
+                })}
+                {project.stackExtra.map(name => (
+                  <span key={name} className="chip text-only">{name}</span>
+                ))}
+              </div>
             </div>
           </div>
 
-          <div className="modal-links">
-            {project.links.map((link, i) => (
-              <a
-                key={i}
-                className={'modal-link ' + (i === 0 ? 'primary' : '')}
-                href={link.url}
-                target="_blank"
-                rel="noreferrer"
-              >
-                {linkIcon(link.kind)}
-                {link.label[lang]}
-              </a>
-            ))}
-          </div>
+          {project.links.length > 0 && (
+            <div className="modal-links">
+              {project.links.map((link, i) => (
+                <a
+                  key={i}
+                  className={'modal-link ' + (i === 0 ? 'primary' : '')}
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  {linkIcon(link.kind)}
+                  {link.label[lang]}
+                </a>
+              ))}
+            </div>
+          )}
         </div>
       </div>
     </div>

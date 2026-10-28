@@ -672,6 +672,7 @@ const PROJECTS = [
     stackExtra: ["Power Query", "DAX"],
     links: [],
   },
+  /* Projet Sixt masqué temporairement (en attente du déploiement Vercel)
   {
     id: "sixt",
     image: "assets/projects/sixt.png",
@@ -714,8 +715,8 @@ const PROJECTS = [
     links: [
       {
         kind: "demo",
-        url: "https://luana-deoliveira-sixt.netlify.app/",
-        label: { fr: "Démo Netlify", en: "Netlify demo", pt: "Demo Netlify" },
+        url: "https://luana-deoliveira-sixt.vercel.app/",
+        label: { fr: "Démo Vercel", en: "Vercel demo", pt: "Demo Vercel" },
       },
       {
         kind: "github",
@@ -737,6 +738,7 @@ const PROJECTS = [
       },
     ],
   },
+  */
 ];
 
 // ─── i18n strings ─────────────────────────────────────────────────────────────
